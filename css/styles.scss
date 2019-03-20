@@ -1,0 +1,57 @@
+$background-color: #b8beba;
+$button-color: #374c4F;
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: $background-color;
+    font-size: 100px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+main {
+    display: flex;
+    flex-flow: row wrap;
+    width: 90vmin;
+    height: 90vmin;
+    background: white;
+}
+div.pix {
+    display: block;
+    background: black;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    button {
+        font-size: 6vmin;
+        border: none;
+        height: 8vmin;
+        flex: 1;
+        margin: .5vmin .25vmin 0;
+        background-color: $button-color;
+        border-radius: .5vmin;
+        color: black;
+        font-weight: 600;
+        color: white;
+    }
+    button:hover {
+        background-color: darken($button-color, 10%);
+    }
+    button:active {
+        background-color: darken($button-color, 20%);
+    }
+    button:focus {
+        outline: none;
+    }
+}
