@@ -36,27 +36,27 @@ div.pix {
   display: block;
   background: black;
   opacity: 0;
-  width: 100%;
-  height: 100%;
+  width: 0px;
+  height: 0px;
 }
 
 .button-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  display: -ms-grid;
+  display: grid;
+  place-items: stretch stretch;
+  grid-column-gap: .5vmin;
+  padding-top: .5vmin;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
 }
 
 .button-container button {
-  font-size: 6vmin;
+  font-size: 5vmin;
   border: none;
-  height: 8vmin;
+  height: 6vmin;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  margin: .5vmin .25vmin 0;
   background-color: #374c4F;
   border-radius: .5vmin;
   color: black;
