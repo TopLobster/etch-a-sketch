@@ -1,48 +1,56 @@
-"use-strict";
+"use strict";
 
 let gridSize = 16;
-
-function queryGridSize() {
-    do {
-        gridSize = Number(prompt("Enter the dimensions of the grid"));
-    } while (gridSize > 100 || gridSize < 1 || isNaN(gridSize));
-    createGrid();
-}
+let grid;
+let randomColors;
 
 function createGrid() {
     clearGrid();
-    let main = document.querySelector("main");
-    let divPix = "";
+    let gridDivWidth = 90 / gridSize;
+    let divPix;
     for (let i = 0; i < gridSize * gridSize; i++) {
         divPix = document.createElement('div');
         divPix.className = 'pix';
-        // TODO add event listeners on hover to each div
-        main.appendChild(divPix);
+        divPix.style.width = gridDivWidth + "vmin";
+        divPix.style.height = gridDivWidth + "vmin";
+        grid.appendChild(divPix);
+        grid.childNodes[i].addEventListener('mouseover', () => {
+            grid.childNodes[i].style.opacity = Number(grid.childNodes[i].style.opacity) + 0.1;
+            if (randomColors) {
+                grid.childNodes[i].style.background = "#" + (Math.random()*0xffffff<<0).toString(16);
+            }
+        });
     }
-    sizeGrid();
-}
-
-function sizeGrid() {
-    let gridDivWidth = document.querySelector("main").clientWidth / gridSize;
-    divs = document.querySelectorAll('div.pix');
-    for (let i = 0; i < divs.length; i++) {
-        divs[i].setAttribute('style', 'width: ' + gridDivWidth + 'px; height: ' + gridDivWidth + 'px;');
-    }
-    //TODO fix sizing issue and overflow
 }
 
 function clearGrid() {
-    // TODO
+    while (grid.firstChild) {
+        grid.removeChild(grid.firstChild);
+    }
 }
 
 function resetGrid() {
-    // TODO
-    alert("test");
+    for (let i = 0; i < grid.childNodes.length; i++) {
+        grid.childNodes[i].style.opacity = 0;
+    }
+}
+
+function clamp(x, min, max) {
+    return x > max ? max : x < min ? min : x;
 }
 
 window.onload = function() {
+    grid = document.querySelector("main");
     createGrid();
-    let create = document.querySelector("#create").addEventListener('click', () => queryGridSize());
+    let create = document.querySelector("#create").addEventListener('click', () => {
+        randomColors = false;
+        gridSize = clamp(document.querySelector("#size").value, 1, 100);
+        createGrid();
+    });
+    let createRandom = document.querySelector("#createRandom").addEventListener('click', () => {
+        randomColors = true;
+        gridSize = clamp(document.querySelector("#size").value, 1, 100);
+        createGrid();
+    });
     let reset = document.querySelector("#reset").addEventListener('click', () => resetGrid());
-    let resize = document.addEventListener("resize", () => sizeGrid());
 };

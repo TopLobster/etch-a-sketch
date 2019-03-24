@@ -3,6 +3,10 @@
           box-sizing: border-box;
 }
 
+*:focus {
+  outline: none;
+}
+
 html {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -43,23 +47,20 @@ div.pix {
 .button-container {
   display: -ms-grid;
   display: grid;
-  place-items: stretch stretch;
+  place-items: stretch;
   grid-column-gap: .5vmin;
   padding-top: .5vmin;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  height: 6vmin;
+  width: 90vmin;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
 .button-container button {
-  font-size: 5vmin;
-  border: none;
-  height: 6vmin;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  border: 0.2vmin solid #374c4F;
   background-color: #374c4F;
   border-radius: .5vmin;
-  color: black;
+  font-size: 5vmin;
   font-weight: 600;
   color: white;
 }
@@ -74,5 +75,21 @@ div.pix {
 
 .button-container button:focus {
   outline: none;
+  border-color: orange;
+}
+
+.button-container input[type="number"] {
+  background-color: white;
+  border-radius: .5vmin;
+  font-size: 5vmin;
+  font-weight: 600;
+  width: 100%;
+  color: #374c4F;
+  text-align: center;
+  border: 0.2vmin solid #374c4F;
+}
+
+.button-container input[type="number"]:focus {
+  border-color: orange;
 }
 /*# sourceMappingURL=styles.css.map */

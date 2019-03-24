@@ -5,6 +5,10 @@ $button-color: #374c4F;
     box-sizing: border-box;
 }
 
+*:focus {
+    outline: none;
+}
+
 html {
     display: flex;
     align-items: center;
@@ -32,18 +36,17 @@ div.pix {
 
 .button-container {
     display: grid;
-    place-items: stretch stretch;
+    place-items: stretch;
     grid-column-gap: .5vmin;
     padding-top: .5vmin;
-    grid-template-columns: 1fr 1fr;
+    height: 6vmin;
+    width: 90vmin;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     button {
-        font-size: 5vmin;
-        border: none;
-        height: 6vmin;
-        flex: 1;
+        border: .2vmin solid $button-color;
         background-color: $button-color;
         border-radius: .5vmin;
-        color: black;
+        font-size: 5vmin;
         font-weight: 600;
         color: white;
     }
@@ -55,5 +58,19 @@ div.pix {
     }
     button:focus {
         outline: none;
+        border-color: orange;
+    }
+    input[type="number"] {
+        background-color: white;
+        border-radius: .5vmin;
+        font-size: 5vmin;
+        font-weight: 600;
+        width: 100%;
+        color: $button-color;
+        text-align: center;
+        border: .2vmin solid $button-color;
+    }
+    input[type="number"]:focus {
+        border-color: orange;
     }
 }
