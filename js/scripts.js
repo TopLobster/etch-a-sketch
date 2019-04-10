@@ -14,7 +14,7 @@ function createGrid() {
         divPix.style.width = gridDivWidth + "vmin";
         divPix.style.height = gridDivWidth + "vmin";
         grid.appendChild(divPix);
-        grid.childNodes[i].addEventListener('mouseover', (grid, i, randomColors) => {
+        grid.childNodes[i].addEventListener('mouseover', () => {
             grid.childNodes[i].style.opacity = Number(grid.childNodes[i].style.opacity) + 0.1;
             if (randomColors) {
                 grid.childNodes[i].style.background = "#" + (Math.random()*0xffffff<<0).toString(16);
